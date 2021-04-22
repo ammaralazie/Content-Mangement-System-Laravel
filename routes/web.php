@@ -25,6 +25,8 @@ Route::prefix('admin')->group(function () {
     Route::get('/posts', 'PostsController@index')->name('post.index');
     Route::get('/post/delete/{id}', 'PostsController@destroy')->name('post.destroy');
     Route::get('/posts/trashed', 'PostsController@trash')->name('post.trash');
+    Route::get('/posts/hdelete/{id}', 'PostsController@hdelete')->name('post.hdelete');
+    Route::get('/posts/restore//{id}', 'PostsController@re_store')->name('post.restore');
 });
 
 //route for category

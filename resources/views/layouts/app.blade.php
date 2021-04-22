@@ -50,6 +50,9 @@
                         <li class="nav-item">
                             <a href="{{ route('post.index') }}">All Posts</a>
                         </li>
+                        <li class="nav-item">
+                            <a href="{{ route('post.trash') }}">posts trashed</a>
+                        </li>
                     </ul>
 
 

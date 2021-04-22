@@ -114,4 +114,18 @@ class PostsController extends Controller
         $data=Post::onlyTrashed()->get();
         return view('posts.post_trashed')->with('obj',$data);
     }
+
+
+    public function hdelete($id)
+    {
+       $obj=Post::withTrashed()->where('id',$id)->first();
+       $obj->forceDelete();
+       return redirect()->back();
+    }
+
+    public function re_store($id){
+        $obj=Post::withTrashed()->where('id',$id)->first();
+        $obj->restore();
+        return redirect()->route('post.index');
+    }
 }

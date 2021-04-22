@@ -27,7 +27,7 @@
                                 <td>{{$i->updated_at}}</td>
                                 <td>{{$i->deleted_at}}</td>
 
-                                <td><a href="{{--route('category.edit',['id'=>$i->id])--}}"><i class="fas fa-edit"></i></a></td>
+                                <td><a href="{{route('category.edit',['id'=>$i->id])}}"><i class="fas fa-edit"></i></a></td>
                                 <td><a href="{{route('post.destroy',['slug'=>$i->id])}}"><i class="fas fa-trash"></i></a></td>
                             </tr>
                         @endforeach
