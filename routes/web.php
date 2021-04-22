@@ -23,6 +23,7 @@ Route::prefix('admin')->group(function () {
     Route::get('/posts/create', 'PostsController@create')->name('create');
     Route::post('/posts/store', 'PostsController@store')->name('store');
     Route::get('/posts', 'PostsController@index')->name('post.index');
+    Route::get('/post/delete/{id}', 'PostsController@destroy')->name('post.destroy');
 });
 
 //route for category

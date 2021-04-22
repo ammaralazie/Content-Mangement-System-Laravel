@@ -105,6 +105,8 @@ class PostsController extends Controller
      */
     public function destroy($id)
     {
-        //
+       $obj=Post::find($id);
+       $obj->delete();
+       return redirect()->back();
     }
 }
