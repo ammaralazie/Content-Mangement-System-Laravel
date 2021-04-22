@@ -109,4 +109,9 @@ class PostsController extends Controller
        $obj->delete();
        return redirect()->back();
     }
+
+    public function trash(){
+        $data=Post::onlyTrashed()->get();
+        return view('posts.post_trashed')->with('obj',$data);
+    }
 }

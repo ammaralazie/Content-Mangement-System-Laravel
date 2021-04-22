@@ -47,6 +47,9 @@
                         <li class="nav-item">
                             <a href="{{ route('category.index') }}">All categories</a>
                         </li>
+                        <li class="nav-item">
+                            <a href="{{ route('post.index') }}">All Posts</a>
+                        </li>
                     </ul>
 
 
