@@ -5,11 +5,13 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Category;
 use App\Post;
+
 class PostsController extends Controller
 {
 
 
-    public function __construct(){
+    public function __construct()
+    {
         $this->middleware('auth');
     }
     /**
@@ -19,8 +21,8 @@ class PostsController extends Controller
      */
     public function index()
     {
-        $data=Post::all();
-        return view('posts.index')->with('obj',$data);
+        $data = Post::all();
+        return view('posts.index')->with('obj', $data);
     }
 
     /**
@@ -30,8 +32,8 @@ class PostsController extends Controller
      */
     public function create()
     {
-        $data=Category::all();
-        return view('posts.create')->with('obj',$data);
+        $data = Category::all();
+        return view('posts.create')->with('obj', $data);
     }
 
     /**
@@ -43,24 +45,24 @@ class PostsController extends Controller
     public function store(Request $request)
     {
         #dd($request->all());
-        $this->validate($request,[
-            'title'=>"required",
-            'content'=>"required",
-            'category_id'=>"required",
-            'avater'=>"required|image",
+        $this->validate($request, [
+            'title' => "required",
+            'content' => "required",
+            'category_id' => "required",
+            'avater' => "required|image",
         ]);
-        $image=$request->avater;
-        $image_new=rand(1,1000000).time().$image->getClientOriginalName();
-        $image->move('media/posts',$image_new);
-        $post=Post::create([
-            'title'=>$request->title,
-            'content'=>$request->content,
-            'category_id'=>$request->category_id,
-            'featured'=>'media/posts/'.$image_new,
-            'slug'=>str_slug($request->title)
+        $image = $request->avater;
+        $image_new = rand(1, 1000000) . time() . $image->getClientOriginalName();
+        $image->move('media/posts', $image_new);
+        $post = Post::create([
+            'title' => $request->title,
+            'content' => $request->content,
+            'category_id' => $request->category_id,
+            'featured' => 'media/posts/' . $image_new,
+            'slug' => str_slug($request->title)
         ]);
-        return redirect()->back();
 
+        return redirect()->back();
     }
 
     /**
@@ -82,7 +84,14 @@ class PostsController extends Controller
      */
     public function edit($id)
     {
-        //
+        $data = Post::find($id);
+        $myCategory = Category::find($data->category_id);
+        $categories = Category::all();
+        if ($data !=null){
+        return view('posts.edit')->with('obj', $data)->with('categories', $categories)->with('myCategory', $myCategory);
+        }else{
+            return view('posts.edit')->with('messageErorr','dont found any value try agin');
+        }
     }
 
     /**
@@ -94,7 +103,28 @@ class PostsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        //dd( $request->all());
+        $obj=Post::find($id);
+        $this->validate($request, [
+            'title' => "required",
+            'content' => "required",
+            'category_id' => "required",
+        ]);
+        if ($request->hasFile($request->avater)) {
+            $image = $request->avater;
+            $image_new = rand(1, 100000) . time() . $image->getClientOriginalNam();
+            $image->move('media/posts', $image_new);
+            $obj->featured=$image_new;
+        } //end if
+
+
+        $obj->title = $request->title;
+        $obj->content = $request->content;
+        $obj->category_id = $request->category_id;
+        $obj->slug =str_slug($request->title);
+        $obj->save();
+
+        return redirect()->route('post.index');
     }
 
     /**
@@ -105,26 +135,28 @@ class PostsController extends Controller
      */
     public function destroy($id)
     {
-       $obj=Post::find($id);
-       $obj->delete();
-       return redirect()->back();
+        $obj = Post::find($id);
+        $obj->delete();
+        return redirect()->back();
     }
 
-    public function trash(){
-        $data=Post::onlyTrashed()->get();
-        return view('posts.post_trashed')->with('obj',$data);
+    public function trash()
+    {
+        $data = Post::onlyTrashed()->get();
+        return view('posts.post_trashed')->with('obj', $data);
     }
 
 
     public function hdelete($id)
     {
-       $obj=Post::withTrashed()->where('id',$id)->first();
-       $obj->forceDelete();
-       return redirect()->back();
+        $obj = Post::withTrashed()->where('id', $id)->first();
+        $obj->forceDelete();
+        return redirect()->back();
     }
 
-    public function re_store($id){
-        $obj=Post::withTrashed()->where('id',$id)->first();
+    public function re_store($id)
+    {
+        $obj = Post::withTrashed()->where('id', $id)->first();
         $obj->restore();
         return redirect()->route('post.index');
     }

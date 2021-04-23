@@ -26,7 +26,9 @@ Route::prefix('admin')->group(function () {
     Route::get('/post/delete/{id}', 'PostsController@destroy')->name('post.destroy');
     Route::get('/posts/trashed', 'PostsController@trash')->name('post.trash');
     Route::get('/posts/hdelete/{id}', 'PostsController@hdelete')->name('post.hdelete');
-    Route::get('/posts/restore//{id}', 'PostsController@re_store')->name('post.restore');
+    Route::get('/posts/restore/{id}', 'PostsController@re_store')->name('post.restore');
+    Route::get('/posts/edit/{id}', 'PostsController@edit')->name('post.edit');
+    Route::post('/posts/update/{id}', 'PostsController@update')->name('post.update');
 });
 
 //route for category
