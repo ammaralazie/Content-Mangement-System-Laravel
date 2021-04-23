@@ -7,7 +7,7 @@
             <div class="card">
                 <div class="card-header"> __('All Categories')</div>
                 <div class="card-body">
-
+                    @if ($obj->count()>0)
                     <table class="table">
                         <thead>
                             <tr>
@@ -33,6 +33,10 @@
                         @endforeach
                         </tbody>
                     </table>
+                    @else
+                     <p>dont found any posts</p>
+                    @endif
+
                 </div>
             </div>
         </div>

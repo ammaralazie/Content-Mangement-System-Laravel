@@ -7,6 +7,8 @@
             <div class="card">
                 <div class="card-header"> posts deleted</div>
                 <div class="card-body">
+                    @if ($obj->count()>0)
+
 
                     <table class="table">
                         <thead>
@@ -33,6 +35,9 @@
                         @endforeach
                         </tbody>
                     </table>
+                    @else
+                     <p>dont found any posts</p>
+                    @endif
                 </div>
             </div>
         </div>

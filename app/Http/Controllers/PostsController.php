@@ -87,11 +87,8 @@ class PostsController extends Controller
         $data = Post::find($id);
         $myCategory = Category::find($data->category_id);
         $categories = Category::all();
-        if ($data !=null){
+
         return view('posts.edit')->with('obj', $data)->with('categories', $categories)->with('myCategory', $myCategory);
-        }else{
-            return view('posts.edit')->with('messageErorr','dont found any value try agin');
-        }
     }
 
     /**
