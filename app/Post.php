@@ -19,6 +19,10 @@ class Post extends Model
         $this->belongsTo('App/Category');
     } //end function categor
 
+    public function tags(){
+        return $this->belongsToMany('App/Tag');
+    }//end function tags
+
     public function getFeaturedAttribute($featured)
     {
         return asset($featured);

@@ -53,6 +53,9 @@
                         <li class="nav-item">
                             <a href="{{ route('post.trash') }}">posts trashed</a>
                         </li>
+                        <li class="nav-item">
+                            <a href="{{ route('tag.create') }}">Tag Create</a>
+                        </li>
                     </ul>
 
 
