@@ -60,7 +60,9 @@ class PostsController extends Controller
             'content' => "required",
             'category_id' => "required",
             'avater' => "required|image",
-        ]);
+            'category_id' => "required",
+            'tagename' => "required",
+            ]);
         $image = $request->avater;
         $image_new = rand(1, 1000000) . time() . $image->getClientOriginalName();
         $image->move('media/posts', $image_new);
@@ -71,6 +73,7 @@ class PostsController extends Controller
             'featured' => 'media/posts/' . $image_new,
             'slug' => str_slug($request->title)
         ]);
+        $post->tags()->attach($request->tagename);
 
         return redirect()->back();
     }
@@ -95,10 +98,12 @@ class PostsController extends Controller
     public function edit($id)
     {
         $data = Post::find($id);
-        $myCategory = Category::find($data->category_id);
         $categories = Category::all();
+        $tagsname=Tag::all();
 
-        return view('posts.edit')->with('obj', $data)->with('categories', $categories)->with('myCategory', $myCategory);
+        return view('posts.edit')->with('obj', $data)
+        ->with('categories', $categories)
+        ->with('tagsname',$tagsname);
     }
 
     /**
@@ -130,6 +135,7 @@ class PostsController extends Controller
         $obj->category_id = $request->category_id;
         $obj->slug =str_slug($request->title);
         $obj->save();
+        $obj->tags()->sync($request->tagename);
 
         return redirect()->route('post.index');
     }

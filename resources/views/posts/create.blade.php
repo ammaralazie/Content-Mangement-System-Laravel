@@ -53,12 +53,14 @@
                         </div>
                         <!--Tags Checkbox-->
                         @foreach ($datatag as $j)
-                        <div class="custom-control custom-checkbox">
-                            <input type="checkbox" class="custom-control-input" value={{$j->id}} name="tagname[]" id="customCheck1">
-                            <label class="custom-control-label" for="customCheck1">{{$j->name}}</label>
-                          </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="{{$j->id}}" name="tagename[]" id="defaultCheck1">
+                                <label class="form-check-label" for="">
+                                    {{$j->name}}
+                                </label>
+                            </div>
                         @endforeach
-
+                        <br>
                         <button type="submit" class="btn btn-primary">Save</button>
                       </form>
 

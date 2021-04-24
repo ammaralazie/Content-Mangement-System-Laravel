@@ -37,9 +37,13 @@
                     </div>
                     <div class="mb-3">
                     <select class="form-select" aria-label="Default select example" name='category_id'>
-                        <option  selected>{{$myCategory->name}}</option>
+
                         @foreach ($categories as $i)
-                            <option value="{{$i->id}}">{{$i->name}}</option>
+                            <option value="{{$i->id}}"
+                            @if ($i->id ==$obj->category_id)
+                            seleted
+                            @endif
+                            >{{$i->name}}</option>
                         @endforeach
                       </select>
                     </div>
@@ -54,6 +58,21 @@
                         <label for="formFile" class="form-label">take your photo</label>
                         <input class="form-control" type="file" name="avater"  id="formFile">
                     </div>
+
+                    @foreach ($tagsname as $j)
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox"
+                            @foreach ($obj->tags as $tg)
+                                @if ($tg->id==$j->id)
+                                    checked
+                                @endif
+                            @endforeach
+                                value="{{$j->id}}" name="tagename[]" id="defaultCheck1">
+                            <label class="form-check-label" for="">
+                                {{$j->name}}
+                            </label>
+                        </div>
+                    @endforeach
 
                     <button type="submit" class="btn btn-primary">Save</button>
                   </form>

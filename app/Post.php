@@ -1,10 +1,8 @@
 <?php
 
 namespace App;
-
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
-
 
 class Post extends Model
 {
@@ -21,7 +19,7 @@ class Post extends Model
     } //end function categor
 
     public function tags(){
-        return $this->belongsToMany('App/Tag');
+        return $this->belongsToMany('App\Tag');
     }//end function tags
 
     public function getFeaturedAttribute($featured)
