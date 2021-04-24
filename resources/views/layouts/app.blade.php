@@ -37,28 +37,41 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
 
-                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                        <li class="nav-item">
-                            <a href="{{ route('create') }}">Create post</a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="{{ route('category.create') }}">Create category</a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="{{ route('category.index') }}">All categories</a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="{{ route('post.index') }}">All Posts</a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="{{ route('post.trash') }}">posts trashed</a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="{{ route('tag.create') }}">Tag Create</a>
-                        </li>
-                    </ul>
 
+                        <ul class="navbar-nav mr-auto">
 
+                            <li class="nav-item dropdown">
+                              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Psots
+                              </a>
+                              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="{{ route('post.index') }}">all posts</a>
+                                <a class="dropdown-item" href="{{ route('post.trash') }}">posts trashed</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="{{ route('create') }}">create post</a>
+                              </div>
+                            </li>
+
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                  Category
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                  <a class="dropdown-item" href="{{ route('category.index') }}">all categories</a>
+                                  <a class="dropdown-item" href="{{ route('category.create') }}">create category</a>
+
+                              </li>
+
+                              <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                  Tags
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                  <a class="dropdown-item" href="{{ route('tag.create') }}">create tag</a>
+                                  <a class="dropdown-item" href="{{ route('tag.tags') }}">all tags</a>
+                              </li>
+
+                          </ul>
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
                         <!-- Authentication Links -->

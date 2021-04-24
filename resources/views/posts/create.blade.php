@@ -51,6 +51,13 @@
                             <label for="formFile" class="form-label">take your photo</label>
                             <input class="form-control" type="file" name="avater" id="formFile">
                         </div>
+                        <!--Tags Checkbox-->
+                        @foreach ($datatag as $j)
+                        <div class="custom-control custom-checkbox">
+                            <input type="checkbox" class="custom-control-input" value={{$j->id}} name="tagname[]" id="customCheck1">
+                            <label class="custom-control-label" for="customCheck1">{{$j->name}}</label>
+                          </div>
+                        @endforeach
 
                         <button type="submit" class="btn btn-primary">Save</button>
                       </form>

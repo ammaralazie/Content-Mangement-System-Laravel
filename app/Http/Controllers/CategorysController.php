@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Category;
 
+
+
 class CategorysController extends Controller
 {
     /**
@@ -14,8 +16,9 @@ class CategorysController extends Controller
      */
 
     public function index()
-    {   $data=Category::all();
-        return view('categories.index')->with('obj',$data);
+    {
+        $data =Category::all();
+        return view('categories.index')->with('obj', $data);
     }
 
     /**
@@ -36,16 +39,16 @@ class CategorysController extends Controller
      */
     public function store(Request $request)
     {
-       $this->validate($request,[
-           "name"=>'required',
-       ]);
-        $category=new Category();
-        $category->name=$request->name;
+        $this->validate($request, [
+            "name" => 'required',
+        ]);
+        $category = new Category();
+        $category->name = $request->name;
         $category->save();
         return redirect()->back();
 
 
-      // dd($request->all());
+        // dd($request->all());
     }
 
     /**
@@ -65,15 +68,15 @@ class CategorysController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Request $request,$id)
+    public function edit(Request $request, $id)
     {
-        $category=new Category();
-        $data=$category::find($id);
+        $category = new Category();
+        $data = $category::find($id);
 
-            return view('categories.edit')->with('obj',$data);
+        return view('categories.edit')->with('obj', $data);
     }
 
-        //return view('categories.edit')->with('obj',$data);
+    //return view('categories.edit')->with('obj',$data);
 
 
     /**
@@ -85,9 +88,9 @@ class CategorysController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $category=new Category();
-        $data=$category::find($id);
-        $data->name=$request->name;
+        $category = new Category();
+        $data = $category::find($id);
+        $data->name = $request->name;
         $data->save();
         return redirect()->route('category.index');
     }
@@ -100,8 +103,8 @@ class CategorysController extends Controller
      */
     public function destroy($id)
     {
-        $category=new Category();
-        $data=$category::find($id);
+        $category = new Category();
+        $data = $category::find($id);
         $data->delete();
         return redirect()->route('category.index');
     }

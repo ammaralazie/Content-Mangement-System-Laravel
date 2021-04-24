@@ -1,10 +1,10 @@
 <?php
 
 namespace App\Http\Controllers;
-
 use Illuminate\Http\Request;
 use App\Category;
 use App\Post;
+use App\Tag;
 
 class PostsController extends Controller
 {
@@ -33,7 +33,17 @@ class PostsController extends Controller
     public function create()
     {
         $data = Category::all();
-        return view('posts.create')->with('obj', $data);
+        $datatag=Tag::all();
+        if($data->count()==0){
+            return redirect()->route('category.create');
+        }//end iff
+        if( $datatag->count()==0){
+            return redirect()->route('tag.create');
+        }//end if
+
+        return view('posts.create')->with('obj', $data)->with('datatag',$datatag);
+
+
     }
 
     /**

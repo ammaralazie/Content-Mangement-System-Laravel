@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('posts') }}</div>
+                <div class="card-header">{{ __('create category') }}</div>
                 <div class="card-body">
                    @if(count($errors)>0)
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
