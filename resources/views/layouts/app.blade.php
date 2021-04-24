@@ -71,6 +71,15 @@
                                   <a class="dropdown-item" href="{{ route('tag.tags') }}">all tags</a>
                               </li>
 
+                              <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                  Users
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                  <a class="dropdown-item" href="{{ route('user.users') }}">all users</a>
+                                </div>
+                              </li>
+
                           </ul>
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
