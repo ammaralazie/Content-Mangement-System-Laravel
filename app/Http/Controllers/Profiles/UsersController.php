@@ -13,7 +13,10 @@ class UsersController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function __construct(){
 
+        //هاي تخلي اليوزر الى يكون ادمن قيمته واحد يلا يكدر يوصل للميودس الموجودة جوة
+    }
     public function index()
     {
        $data=User::all();
