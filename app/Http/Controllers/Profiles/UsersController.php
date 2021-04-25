@@ -13,6 +13,7 @@ class UsersController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
     public function index()
     {
        $data=User::all();
@@ -26,7 +27,7 @@ class UsersController extends Controller
      */
     public function create()
     {
-        //
+        return view('profile.create');
     }
 
     /**
@@ -37,7 +38,29 @@ class UsersController extends Controller
      */
     public function store(Request $request)
     {
-        //
+       $this->validate($request,[
+        'name'=>'string',
+        'email'=>'string|email',
+        'password1'=>'string',
+        'password2'=>'string',
+       ]);
+
+       if($request->password1 ==$request->password2){
+           $user=User::create([
+             'name'=> $request->name,
+             'email'=> $request->email,
+             'password'=> bcrypt($request->password1),
+           ]);
+           $profile=Profile::create(
+               [
+                'user_1d'=>$user->id
+               ]
+           );
+
+           return redirect()->route('user.users');
+       }else{
+        return redirect()->route('user.create')->withErrors(['Password does not match']);
+       }
     }
 
     /**
@@ -84,4 +107,15 @@ class UsersController extends Controller
     {
         //
     }
+    public function admin($id,$state){
+        $user=User::find($id);
+        if($state==0){
+            $user->admin=1;
+        }else{
+            $user->admin=0;
+        }
+        $user->save();
+        return redirect()->route('user.users');
+    }//end function admin
+
 }

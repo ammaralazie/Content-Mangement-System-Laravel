@@ -13,7 +13,7 @@
                             <tr>
                                 <th scope="col">Image</th>
                                 <th scope="col">Name</th>
-                                <th scope="col">Update</th>
+                                <th scope="col">Admin State</th>
                                 <th scope="col">delete</th>
                             </tr>
                         </thead>
@@ -23,8 +23,11 @@
                                 <th scope="row"><img style="width: 50px;height:50px;border-radius:24px" src="{{asset('media/avatar/default_avatar.png')}}" alt=""></th>
                                 <td>{{$i->name}}</td>
 
-
-                                <td><a href="{{--route('post.edit',['id'=>$i->id])--}}"><i class="fas fa-edit"></i></a></td>
+                                @if($i->admin)
+                                    <td><a href="{{route('user.admin',['id'=>$i->id,'state'=>$i->admin])}}">delete admin</i></a></td>
+                                @else
+                                    <td><a href="{{route('user.admin',['id'=>$i->id,'state'=>$i->admin])}}">make admin</i></a></td>
+                                @endif
                                 <td><a href="{{--route('post.destroy',['slug'=>$i->id])--}}"><i class="fas fa-trash"></i></a></td>
                             </tr>
                         @endforeach

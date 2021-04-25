@@ -21,4 +21,7 @@ Route::namespace('Profiles')
 ->middleware('auth')
 ->group(function () {
         Route::get('users/', 'UsersController@index')->name('user.users');
+        Route::get('user/create/', 'UsersController@create')->name('user.create');
+        Route::post('user/store/', 'UsersController@store')->name('user.store');
+        Route::get('user/admin/{id}/{state}', 'UsersController@admin')->name('user.admin');
     });
