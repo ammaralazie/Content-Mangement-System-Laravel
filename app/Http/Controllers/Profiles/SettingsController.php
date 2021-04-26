@@ -17,8 +17,21 @@ class SettingsController extends Controller
         $data=Setting::first();
         return view('setting.index')->with('obj',$data);
     }
-    public function update(){
+    public function update(Request $request){
 
-        return view('setting.edit');
+        $this->validate($request,[
+         'blog_name'=>'required' ,
+         'blog_phone'=>'required' ,
+         'blog_email'=>'required' ,
+         'address'=>'required' ,
+        ]);
+        $setting=Setting::first();
+        $setting->blog_name=$request->blog_name;
+        $setting->blog_phone=$request->blog_phone;
+        $setting->blog_emil=$request->blog_email;
+        $setting->address=$request->address;
+        $setting->save();
+        return redirect()->back();
+
     }
 }

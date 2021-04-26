@@ -1,0 +1,134 @@
+*{
+    margin: 0;
+    padding: 0;
+    outline: none;
+    border: none;
+    box-sizing: border-box;
+}
+
+body{
+    background-color: rgb(223, 229, 233);
+}
+
+.container_nav{
+    width: 100%;
+    height: 170px;
+    /* position: relative; */
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center; */
+    align-items: center;
+    background-color: #9acd32;
+    box-shadow: 2px 2px 2px #014250;
+    position: fixed;
+}
+
+
+
+.wepper{
+    width: 70%;
+    height: 44%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+    transition:all 3s ease;
+    position:absolute;
+
+}
+
+.logo{
+    width: 40%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+}
+.title_nav a{
+font-size: 24px;
+font-weight: 500;
+color: #014250;
+text-decoration:none;
+}
+
+.social_nav i,.search_nav i{
+  margin: 20px;
+  font-size: 24px;
+  color: #014250;
+
+}
+
+.search_nav i{
+    position: absolute;
+    right: 85px;;
+}
+.search_nav{
+    height: 100%;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    position: relative;
+}
+.spans_nav{
+    position: relative;
+    height: 70%;
+    width: 70px;
+    display: grid;
+    align-items: center;
+    justify-content: space-between;
+}
+.search_nav span{
+
+    width: 40px;
+    height: 5px;
+    background-color: #014250;
+    right: 26%;
+    border-radius: 5px;
+
+}
+.wepper2 {
+    width: 100%;
+    height: 80px;
+    position: absolute;
+    top: 85px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.category-nav{
+    width: 70%;
+    height: 95px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+}
+
+.category-nav ul{
+    list-style: none;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 80%;
+    height: 100%;
+}
+
+.category-nav ul li{
+    margin: 0 auto;
+    color: #014250;
+    font-size: 24px;
+    cursor: pointer;
+}
+.category-nav ul li a{
+    text-decoration: none;
+    color: #014250;
+
+}
+
+.category-nav ul li a:hover{
+    color: rgb(3, 148, 15);
+    transition:color .5s ease;
+}

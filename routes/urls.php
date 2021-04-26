@@ -29,5 +29,5 @@ Route::namespace('Profiles')
 
         //Settings
         Route::get('setting/index/', 'SettingsController@index')->name('setting.index');
-        Route::post('setting/update/', 'SettingsController@edit')->name('setting.update');
+        Route::post('setting/update/', 'SettingsController@update')->name('setting.update');
     });
