@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Category;
+use App\Setting;
+use App\User;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -23,6 +26,9 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $user=Setting::first()->blog_name;
+        $category=Category::all()->take(5);
+        return view('home')->with('user',$user)
+        ->with('category',$category);
     }
 }

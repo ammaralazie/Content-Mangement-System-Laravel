@@ -19,13 +19,13 @@
              <!--  logo  -->
             <div class="logo">
                 <div class="title_nav">
-                   <a href=""> Logo</a>
+                   <a href=""> {{$user}}</a>
                 </div>
-                <di class="social_nav">
+                <div class="social_nav">
                     <a href=""><i class="fab fa-facebook-f"></i></a>
                     <a href=""><i class="fab fa-instagram"></i></a>
                     <a href=""><i class="fab fa-github"></i></a>
-                </di>
+                </div>
             </div>
              <!--  /logo  -->
 
@@ -45,18 +45,16 @@
         <div class="wepper2">
             <div class="category-nav">
                 <ul id='category'>
-                    <li><a href="">Category1</a></li>
-                    <li><a href="">Category1</a></li>
-                    <li><a href="">Category1</a></li>
-                    <li><a href="">Category1</a></li>
-                    <li><a href="">Category1</a></li>
+                    @foreach ($category as $i)
+                    <li><a href="">{{$i->name}}</a></li>
+                    @endforeach
                 </ul>
             </div>
         </div>
     </div>
      <!--  /navbar  -->
      @yield('body')
-     <script src="main.js"></script>
+     <script src="{{asset('mystyle\js\main.js')}}"></script>
      @yield('script')
 </body>
 </html>
