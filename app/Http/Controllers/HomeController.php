@@ -44,8 +44,12 @@ class HomeController extends Controller
         $post=Post::where('slug',$slug)->first();
         $user=Setting::first()->blog_name;
         $category=Category::all()->take(5);
+        $next=Post::where('id','>',$post->id)->min('id');
+        $previous=Post::where('id','<',$post->id)->max('id');
         return view('detail_post')->with('post',$post)
         ->with('user',$user)
-        ->with('category',$category);
+        ->with('category',$category)
+        ->with('next',Post::find($next))
+        ->with('previous',Post::find($previous));
     }
 }

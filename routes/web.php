@@ -13,10 +13,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', 'HomeController@index')->name('home.index');
-Route::get('detail/{slug}', 'HomeController@detail')->name('home.detail');
+Route::get('/','HomeController@index')->name('home.index');
+Route::get('detail/{slug}','HomeController@detail')->name('home.detail');
 Auth::routes();
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/home','HomeController@index')->name('home');
 
 //route for post
 Route::prefix('admin')->group(function () {
